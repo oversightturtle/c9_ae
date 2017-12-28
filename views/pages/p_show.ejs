@@ -1,0 +1,14 @@
+<% include ../partials/head %>
+    <title> find-user  </title>
+<% include ../partials/header %>
+
+<h1>view user</h1>
+<img  class="profile_pic" src='<%= user.profile %>'>
+<%= user.username %><br>
+<%= user.location %><br>
+<%= user.name %><br>
+<%= user.id %><br>
+<a href="/p/<%= user.id %>/edit">edit me</a>
+
+
+<% include ../partials/footer %>

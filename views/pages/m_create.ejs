@@ -1,0 +1,14 @@
+<% include ../partials/head %>
+    <title> create a message  </title>
+<% include ../partials/header %>
+
+<h1>create a message</h1>
+
+message to: <%= newid  %>
+<form action="/m/<%= newid %>" method="POST">
+    <textarea name="content"></textarea>
+    <button>Send Message</button>
+</form>
+
+
+<% include ../partials/footer %>

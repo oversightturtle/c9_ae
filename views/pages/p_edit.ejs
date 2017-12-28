@@ -1,0 +1,22 @@
+<% include ../partials/head %>
+    <title> find-user  </title>
+<% include ../partials/header %>
+
+<h1>view user</h1>
+<%= user.username %><br>
+<%= user.id %><br>
+
+<form action="/m/<%= user.id %>" method='GET'>
+    <button>START A CONV</button>
+</form>
+
+<form action="/p/<%= user.id %>?_method=PUT" method="POST">
+    <input type="text" name="location" placeholder="location" value="<%= user.location %>">
+    <button>edit</button>
+</form>
+<form action="/p/<%= user.id %>?_method=DELETE" method="POST">
+    <button>
+        DELETE ME
+    </button>
+</form>
+<% include ../partials/footer %>

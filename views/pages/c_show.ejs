@@ -1,0 +1,14 @@
+<% include ../partials/head %>
+    <title> create a message  </title>
+<% include ../partials/header %>
+
+<h1>communications ... </h1>
+
+<% msg.forEach(function(msg){ %>
+    <%= msg.sender %><br>
+    <%= msg.parts %><br>
+    <%= msg.content %><br>
+<% }) %>
+
+
+<% include ../partials/footer %>

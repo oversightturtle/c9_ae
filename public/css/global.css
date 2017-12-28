@@ -1,0 +1,42 @@
+body{
+    background-color: lightgreen;
+}
+
+.container{
+    background-color: lightblue;
+}
+
+.profile_pic{
+    border-radius: 10px;
+    height: 300px;
+    width: auto;
+}
+
+@media (max-width:767px) {
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+}
+@media (min-width:768px) and (max-width:991px) { 
+     .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 90%;
+    }
+}
+@media (min-width:992px) and (max-width:1199px) { 
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 950px;
+    }
+}
+@media (min-width:1200px) { 
+    .container{
+        margin-left: auto;
+        margin-right: auto;
+        width: 950;
+    }
+}

@@ -1,0 +1,16 @@
+<% include ../partials/head %>
+    <title> find users  </title>
+<% include ../partials/header %>
+
+<h1> ind user page </h1>
+
+<% user.forEach(function(user){ %>
+
+<%= user.username %>
+
+<a href='/p/<%= user.username %>'>view more</a><br>
+    
+<% }) %>
+
+
+<% include ../partials/footer %>
