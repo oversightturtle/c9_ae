@@ -38,19 +38,22 @@ router.post("/upload_img", onlyLOGIN, (req,res) => { upload(req, res, (err) => {
     })
 })
 
-router.get("/c/:id", onlyLOGIN, (req, res) => { 
+//////////////////////////////////
+router.get("/c/:id", onlyLOGIN, (req, res) => {  // << SHOW CONV
     msg.find({conv_id: req.params.id}, (err, msg) => {
         res.render("pages/c_show", {msg:msg})
     });
 });
 
-router.get("/m/:id", onlyLOGIN, (req, res) => { res.render("pages/m_create",{newid: req.params.id});});
+router.get("/m/:id", onlyLOGIN, (req, res) => { res.render("pages/m_create",{newid: req.params.id});}); // << CSHOW MSG OF A CONV
 
-router.post("/m/:id",onlyLOGIN, (req,res) => {
-    conv.findOne({parts:[req.params.id, req.user.id]},"_id",(err,iconv) => {// conv meam diff things
-        if (!iconv){ conv.create({ parts:[req.params.id, req.user.id]})};
+router.post("/m/:id",onlyLOGIN, (req,res) => { // << CREATE MSG
+    conv.findOne({parts:[req.params.id, req.user.id]},(err,iconv) => {// conv meam diff things
+        if (!iconv){ conv.create({ parts:[req.params.id, req.user.id]}); console.log("TRIGGER")};
     }); 
-    conv.findOne({parts:[req.params.id, req.user.id]},"_id",(err,iconv) => {// conv meam diff things
+    conv.findOne({parts:[req.params.id, req.user.id]},(err,iconv) => {// conv meam diff things
+        console.log(iconv);
+        console.log(req.user.id);
         msg.create({ sender: req.user.id, content: req.body.content, conv_id: iconv.id})
     })
     res.redirect("/");
@@ -137,3 +140,15 @@ router.post("/signup", (req,res) => {
 });
 
 module.exports = router;
+
+// router.post("/m/:id",onlyLOGIN, (req,res) => {
+//     conv.findOne({parts:[req.params.id, req.user.id]},"_id",(err,iconv) => {// conv meam diff things
+//         if (!iconv){ conv.create({ parts:[req.params.id, req.user.id]}); console.log("TRIGGER")};
+//     }); 
+//     conv.findOne({parts:[req.params.id, req.user.id]},"_id",(err,iconv) => {// conv meam diff things
+//         console.log(iconv);
+//         console.log(req.user.id);
+//         msg.create({ sender: req.user.id, content: req.body.content, conv_id: iconv.id})
+//     })
+//     res.redirect("/");
+// })
